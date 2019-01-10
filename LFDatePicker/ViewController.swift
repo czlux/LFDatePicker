@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickView = LFDatePickView()
+        pickView = LFDatePickView(dateFormat: .YearMonthDay)
         self.view.addSubview(pickView!)
         
         let safeGuide = self.view.safeAreaLayoutGuide

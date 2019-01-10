@@ -32,6 +32,13 @@ class LFDatePickView:UIView{
     
     private var datePicker = UIPickerView()
     
+    private var dataModel = DateModel()
+    
+    private var dateType = DateType.YearMonth
+    
+    var currentYearIndex = 0
+    var currentMonthIndex = 0
+    var currentDayIndex = 0
    
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,8 +64,9 @@ class LFDatePickView:UIView{
         whiteBGView.addSubview(datePicker)
         
     }
-    convenience init() {
+    convenience init(dateFormat:DateType) {
        self.init(frame: CGRect.zero)
+        self.dateType = dateFormat
     }
     override func layoutSubviews() {
         blackView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height)
@@ -74,19 +82,95 @@ class LFDatePickView:UIView{
 }
 extension LFDatePickView:UIPickerViewDelegate,UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return 10
+        switch self.dateType {
+        case .YearMonthDay:
+            if component == 0{
+                return self.dataModel.dataArr.count
+            }else if component == 1{
+                return self.dataModel.dataArr[currentYearIndex].s.count
+            }else{
+                return self.dataModel.dataArr[currentYearIndex].s[currentMonthIndex].s.count
+            }
+        case .YearMonth:
+            if component == 0{
+                 return self.dataModel.dataArr.count
+            }else {
+                return self.dataModel.dataArr[currentYearIndex].s.count
+            }
+        default:
+            return 0
+        }
+
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
-        return 3
+        switch self.dateType {
+        case .YearMonthDay:
+            return 3
+        case .YearMonth:
+            return 2
+        default:
+            return 0
+        }
+      
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "--"
+
+        switch self.dateType {
+        case .YearMonthDay:
+            if component == 0{
+                return String(self.dataModel.dataArr[row].i)
+            }else if component == 1{
+                return String(self.dataModel.dataArr[currentYearIndex].s[row].i)
+            }else{
+                return String(self.dataModel.dataArr[currentYearIndex].s[currentMonthIndex].s[row].i)
+            }
+        case .YearMonth:
+            if component == 0{
+                return String(self.dataModel.dataArr[row].i)
+            }else {
+                return String(self.dataModel.dataArr[currentYearIndex].s[row].i)
+            }
+        default:
+            return "--"
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch self.dateType {
+        case .YearMonthDay:
+            if component == 0{
+                currentYearIndex = row
+                currentMonthIndex = 0
+                currentDayIndex = 0
+                pickerView.selectRow(0, inComponent: 1, animated: false)
+                pickerView.selectRow(0, inComponent: 2, animated: false)
+            }else if component == 1{
+                currentMonthIndex = row
+                currentDayIndex = 0
+                pickerView.selectRow(0, inComponent: 2, animated: false)
+            }else{
+                currentDayIndex = row
+            }
+        case .YearMonth:
+            if component == 0{
+                currentYearIndex = row
+                currentMonthIndex = 0
+            }else {
+                currentMonthIndex = row
+            }
+        default:
+            break
+        }
+        pickerView.reloadAllComponents()
     }
 //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let cell = UIView()
-//        cell.backgroundColor = UIColor.lightGray
-//        return cell
+//        let rview = view as? UILabel
+//
+//        if let cell = rview{
+//
+//            return cell
+//        }
+//
+//        return UIView()
 //    }
 }
