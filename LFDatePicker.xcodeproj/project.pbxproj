@@ -14,6 +14,9 @@
 		2103095C21E725BB00C52930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2103095A21E725BB00C52930 /* LaunchScreen.storyboard */; };
 		2103096721E725BB00C52930 /* LFDatePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2103096621E725BB00C52930 /* LFDatePickerTests.swift */; };
 		2103097221E725BB00C52930 /* LFDatePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2103097121E725BB00C52930 /* LFDatePickerUITests.swift */; };
+		2103098121E728C200C52930 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2103098021E728C200C52930 /* Model.swift */; };
+		2103098321E7299300C52930 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2103098221E7299300C52930 /* Views.swift */; };
+		2103098521E72A5200C52930 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2103098421E72A5200C52930 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		2103096D21E725BB00C52930 /* LFDatePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LFDatePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2103097121E725BB00C52930 /* LFDatePickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFDatePickerUITests.swift; sourceTree = "<group>"; };
 		2103097321E725BB00C52930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2103098021E728C200C52930 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2103098221E7299300C52930 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		2103098421E72A5200C52930 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		2103095021E725BB00C52930 /* LFDatePicker */ = {
 			isa = PBXGroup;
 			children = (
+				2103097F21E728AD00C52930 /* LFDate */,
 				2103095121E725BB00C52930 /* AppDelegate.swift */,
 				2103095321E725BB00C52930 /* ViewController.swift */,
 				2103095521E725BB00C52930 /* Main.storyboard */,
@@ -123,6 +130,16 @@
 				2103097321E725BB00C52930 /* Info.plist */,
 			);
 			path = LFDatePickerUITests;
+			sourceTree = "<group>";
+		};
+		2103097F21E728AD00C52930 /* LFDate */ = {
+			isa = PBXGroup;
+			children = (
+				2103098021E728C200C52930 /* Model.swift */,
+				2103098221E7299300C52930 /* Views.swift */,
+				2103098421E72A5200C52930 /* Extensions.swift */,
+			);
+			path = LFDate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2103098521E72A5200C52930 /* Extensions.swift in Sources */,
+				2103098321E7299300C52930 /* Views.swift in Sources */,
+				2103098121E728C200C52930 /* Model.swift in Sources */,
 				2103095421E725BB00C52930 /* ViewController.swift in Sources */,
 				2103095221E725BB00C52930 /* AppDelegate.swift in Sources */,
 			);
